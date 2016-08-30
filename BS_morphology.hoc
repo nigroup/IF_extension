@@ -1,0 +1,76 @@
+/*
+This file inits the Ball-and-stick neuron model, i.e., a passive dendritic cable attached to a somatic compartment, stimulated by an extracellular field.
+*/
+
+create soma, dend
+
+// Soma
+soma {
+    nseg    = 1
+    diam    = 10.0      // um
+    L       = 10.0      // um
+    Ra      = 200.0     // Ohm cm
+    cm      = 1.5       // uF/cm2
+}
+soma insert pas
+soma.g_pas  = 1/30000.0   // S/cm2
+soma.e_pas  = -60.0     // mV - Reversal potential
+
+soma insert extracellular
+soma insert xtra
+
+// Dendritic tree
+dend.L      = 700   // um
+dend.diam   = 1.2   // um
+dend.Ra     = 200   // Ohm cm
+dend.cm     = 1.5   // uF/cm2
+
+dend insert pas
+dend.g_pas  = 1/30000.0   // S/cm2
+dend.e_pas  = -60.0     // mV - Reversal potential
+
+dend.nseg   = 50
+
+// Connect the dendritic tree to the soma
+connect dend(0), soma(0)
+
+dend insert extracellular
+dend insert xtra
+
+// Sinusoidal simulation
+objref fsin
+dend fsin = new Fsin(0.5)
+fsin.del = 100
+fsin.amp = 10   // Amplitude in V/m
+fsin.f = 10
+fsin.n = 10
+
+forall {
+    for (x,0) {
+        setpointer im_xtra(x), i_membrane(x)
+        setpointer ex_xtra(x), e_extracellular(x)
+        setpointer fsin.x, is_xtra
+    }
+}
+
+push_section("soma")
+for (x,0) {
+    rx_xtra(x) = 0 * 1e-3 * 1e-6
+}
+pop_section()
+
+push_section("dend")
+for (x,0) {
+    // Transfer from E field to extracellular potential.
+    // 1e-6 since rx_xtra s in megaOhm and 1e3 since dend.L is in um and not mm
+    rx_xtra(x) = -x * dend.L * 1e-3 * 1e-6 // Megohm (mV/nA)
+}
+pop_section()
+
+// Init the membrane potential
+forall{
+    for (x) {
+        v(x) = -60 // (mV) Value of the initial potential
+    }
+}
+tstop = 500
