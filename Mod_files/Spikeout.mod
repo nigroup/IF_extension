@@ -1,9 +1,9 @@
 COMMENT
 
-This file is slightly adapted from Brette et al. 2007 file:
+This file is slightly adapted from Brette et al. 2007:
 https://senselab.med.yale.edu/ModelDB/ShowModel.cshtml?model=83319&file=/destexhe_benchmarks/NEURON/coba/spikeout.mod#tabs-2
 
-This NEURON mechanism implements a spike for an IF neuron model: it resets the membrane potential when it reaches a threshold and fixes it for a given refractory time.
+This NEURON mechanism implements IF-like spiking: it resets the membrane voltage when it reaches a threshold and fixes it for a given refractory time.
 
 ENDCOMMENT
 

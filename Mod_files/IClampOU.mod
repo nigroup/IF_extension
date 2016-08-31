@@ -1,6 +1,6 @@
 COMMENT
 -------------------------------------------------------------------------------
-This code for the Ornstein-Uhlenbeck process is adapted from Rudolph and Destexhe 2005 code.
+This code for the Ornstein-Uhlenbeck process is adapted from the code associated with Rudolph and Destexhe 2005:
 https://senselab.med.yale.edu/ModelDB/ShowModel.cshtml?model=64259&file=\NCnote\Gfluct.mod
 
 -------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ PARAMETER {
 
     mean    = 0     (nA)    : Mean value of the OU process
     std     = 1     (nA)    : Standard deviation of the OU process
-    tau     = 5     (ms)        : Time constante of the OU process
+    tau     = 5     (ms)    : Time constante of the OU process
 }
 
 ASSIGNED {
@@ -54,7 +54,7 @@ BEFORE BREAKPOINT {
 
 BREAKPOINT {
     : The breakpoint is run twice during fadvance, therefore the new value of i should be first computed before the breakpoint
-    :   and then updated during the breakpoint
+    : and then updated during the breakpoint
     : cf: http://www.neuron.yale.edu/phpBB/viewtopic.php?f=16&t=2055&p=7753&hilit=white+noise#p7753
     i = ival + mean
 }

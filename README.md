@@ -1,11 +1,11 @@
-Integrate-and-Fire point neuron extension
+Integrate-and-Fire neuron model extension to reproduce the dynamics of a ball-and-stick (soma + dendrite) model neuron exposed to a weak electric field
 =====
 
 This code is an implementation of the point neuron model extension presented in the article:
 
 **Aspart, Ladenbauer, Obermayer (2016). _Extending integrate-and-fire model neurons to account for the effects of weak electric fields and input filtering mediated by the dendrite._**
 
-This repository contains a running example of the point neuron model extension, eP, in Python as well as a NEURON implementation of a Ball-and-stick, BS, neuron model subject to a dendritic and somatic input as well as a sinusoidal extracellular field.
+This repository contains a running example of the extended LIF point neuron model (eP) in Python as well as a NEURON implementation of a ball-and-stick (BS) neuron model subject to fluctuating somatic and distal dendritic input currents as well as a sinusoidal extracellular field.
 
 **How to cite this code**: if you use this code for your published research, we suggest that you cite the above mentioned article. 
 

@@ -1,5 +1,5 @@
 /*
-This file inits the Ball-and-stick neuron model, i.e., a passive dendritic cable attached to a somatic compartment, stimulated by an extracellular field.
+This file inits the ball-and-stick neuron model, i.e., a passive dendritic cable attached to a somatic compartment, exposed to an extracellular field.
 */
 
 create soma, dend
